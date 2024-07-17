@@ -71,7 +71,7 @@ const loginUsuario = async(req = request, res = response) =>
                     const mifirmaSecreta = process.env.JWT_SECRET;
                     const token = jwt.sign({nombre:usuarioExiste.nombreok},
                         mifirmaSecreta, {expiresIn: '1h'})
-                        res.header('auth-token', token).render('products');
+                        res.header('auth-token', token).render('product');
                        //res.header('auth-token', token).render('form', {mail: '', nombre:usuarioExiste.mailok, nombre: ""});
                     //return res.render('product')
                 }
