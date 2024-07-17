@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h1>
+      Cards de Productos
+  </h1>
+</div>
+<div class="container mt-5 d-flex flex-wrap">
+   {{#each TodosProductos}}
+      {{!-- <form method="post" action="/product/unProducto/{{nombre}}"> --}}
+            <div class="card m-3" style="width: 18rem;">
+               <input type="text" value={{_id}} readonly="true">
+               <img src={{imagen}} class="card-img-top" alt="Imagen del producto">
+               <div class="card-body">
+                  <h5 class="card-title">{{nombre}}</h5>
+                  <p class="card-text">{{descripcion}}</p>
+                  <a href="/product/unProducto/{{_id}}" class="btn btn-primary">Ver producto...</a>
+                  {{!-- <input type="hidden" name="idProducto" value={{_id}}> --}}
+                  {{!-- <button class="btn btn-primary" type="submit">Ver Producto</button> --}}
+               </div>
+            </div>
+      {{!-- </form> --}}
+   {{/each}}
+</div>
+

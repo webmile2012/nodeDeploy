@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h1>
+      Lista de Productos
+  </h1>
+</div>
+<div>
+<table class="table table-striped"> 
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+     </tr>
+  </thead>
+  <tbody>
+    {{#each TodosProductos}}
+        <tr>
+            <th scope="row">{{_id}}</th>
+            <td>{{nombre}}</td>
+            <td>{{descripcion}}</td>
+            <td>{{precio}}</td>
+            <td>
+              <img src={{imagen}} alt="Imagen del producto">
+            </td>
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
