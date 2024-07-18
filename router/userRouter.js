@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 //tomo desestructurado la funcion exportada en userController
-const {loginUsuario, dameUsuarios, crearNuevoUsuario, borrarUsuario, modificarUsuario, dameFormulario, dameLogin} = require('../controllers/userControllers');
+const {loginUsuario, dameUsuarios, crearNuevoUsuario, borrarUsuario, modificarUsuario, dameFormulario, dameLogin, logoutUsuario} = require('../controllers/userControllers');
 //desestructuramos la funcion para chequear los campos desde el BACKEND .. check , body y query sirven para lo mismo
 const {check, body, query} = require('express-validator');
  
@@ -21,6 +21,7 @@ router.post('/login',
         ],
         loginUsuario);
 
+
 router.delete('/', borrarUsuario);
 
 router.post('/form',
@@ -29,6 +30,8 @@ router.post('/form',
             check("passok").isString().isLength({min: 6}).isAlphanumeric()
            ],
            crearNuevoUsuario);
+
+router.post('/logout', logoutUsuario);
 
 //crear array de usuarios para responder a /user/all
 //respondo direxctamente aca sin llamar a funcion, para tener un ej.

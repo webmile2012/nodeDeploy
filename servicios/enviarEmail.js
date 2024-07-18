@@ -3,13 +3,13 @@ const dotenv = require('dotenv');
 //busco la contraseña de .env para gmail
 dotenv.config();
 const GMAIL_PASS = process.env.GMAIL_PASS;
-
+const GMAIL_USER = process.env.GMAIL_USER;
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: "webmile2012@gmail.com",
+    user: GMAIL_USER,
     pass: GMAIL_PASS,
   },
 });
@@ -24,7 +24,7 @@ async function enviarMail(nombre, mail) {
     text: "Hello world?", // plain text body
     //html: "<b>Hello world?</b>", // html body``
     html: `<h1> Gracias ${nombre } por registrarse en nuestra app! </h1> <br>
-          <a href="www.educacionit.com" target= "_black">Visitanos</a>`
+          <a href="https://nodedeploy-production-c8c9.up.railway.app/" target= "_black">Visitanos</a>`
   });
 
   //console.log("Message sent: %s", info.messageId);

@@ -69,10 +69,10 @@ const loginUsuario = async(req = request, res = response) =>
                 else
                 {
                     const mifirmaSecreta = process.env.JWT_SECRET;
-                    const token = jwt.sign({nombre:usuarioExiste.nombreok},
-                        mifirmaSecreta, {expiresIn: '1h'})
-                        res.header('auth-token', token).render('product');
-                       //res.header('auth-token', token).render('form', {mail: '', nombre:usuarioExiste.mailok, nombre: ""});
+                    const token = jwt.sign({nombre:usuarioExiste.nombreok}, mifirmaSecreta, {expiresIn: '1h'})
+                    //res.header('auth-token', token).render('product', {token: token});
+                    res.cookie('auth-token', token).render('product');
+                    //res.header('auth-token', token).render('form', {mail: '', nombre:usuarioExiste.mailok, nombre: ""});
                     //return res.render('product')
                 }
             }    
@@ -192,6 +192,10 @@ const modificarUsuario = (req=request,res=response) =>{
     res.json({actualizado: "datos actualizados"})
 }
 
+const logoutUsuario = (req=request, res=response) => {
+    res.clearCookie('auth-token').render('index');
+}
+
 //exportamos la funcion para tomarla de userRouter.js
 module.exports = {
     dameUsuarios,
@@ -200,5 +204,6 @@ module.exports = {
     crearNuevoUsuario,
     borrarUsuario,
     modificarUsuario,
-    dameFormulario
+    dameFormulario,
+    logoutUsuario
 };
